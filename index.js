@@ -1,8 +1,11 @@
-const submitButton = document.getElementById('submitButton');
 
 /*
-block of code from: https://stackoverflow.com/questions/69839977/how-to-take-text-value-and-add-it-to-list-by-clicking-submit-button-using-dom
+block of code for addToDo() from: https://stackoverflow.com/questions/69839977/how-to-take-text-value-and-add-it-to-list-by-clicking-submit-button-using-dom
+
+including checkbox after adding from chatGPT
+
  */
+const submitButton = document.getElementById('submitButton');
 
 function addToDo() {
   //select container so we can insert our todo items in it
@@ -11,11 +14,22 @@ function addToDo() {
   let input = document.querySelector('#toDoText').value;
   //create an element for each gotten input value
   const todo = document.createElement("li");
-  //set the text(value) of the todo item(li)
-  const txt = document.createTextNode(input);
-  //append the text(value) to do created element(li)
-  todo.appendChild(txt);
-  //Finally we insert the last result(todo with value) inside the container(div)
+  todo.style = 'list-style-type: none'; //so there's not bullet points
+
+  //create a checkbox element
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.id = 'task' + (container.childElementCount+1); //unique id for each checkbox
+
+  //creating label for the to-do item
+  const label = document.createElement('label');
+  label.setAttribute('for', checkbox.id);
+  label.textContent = input;
+
+  //append the checkbox and label to the to-do item (li)
+  todo.appendChild(checkbox);
+  todo.appendChild(label);
+
   document.body.insertBefore(todo,container);
 };
 
