@@ -1,3 +1,9 @@
 h1 {
-  color: purple;
+  color: cadetblue;
+  background-color: blanchedAlmond;
+}
+
+body {
+  color: blanchedAlmond;
+  background-color: darkcyan;
 }
